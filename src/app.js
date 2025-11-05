@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import { env } from './config/env.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { authRouter } from './routes/auth.routes.js';
+import { productRouter } from './routes/products.routes.js';
 
 export const createApp = () => {
     const app = express();
@@ -20,6 +21,7 @@ export const createApp = () => {
 
     // 3) Routes
     app.use("/auth", authRouter())
+    app.use("/product", productRouter())
 
     // 4) Error handler (sempre por último)
     app.use(errorHandler);
